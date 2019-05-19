@@ -8,13 +8,10 @@ with open(readme_file, encoding='utf-8') as f:
     long_description = f.read()
 
 cffi_modules = [
-    'src/build_opus.py:ffibuilder',
-    'src/build_vpx.py:ffibuilder',
 ]
 install_requires = [
     'aioice>=0.6.13,<0.7.0',
     'attrs',
-    'av>=6.2.0,<7.0.0',
     'cffi>=1.0.0',
     'crc32c',
     'cryptography>=2.2',
@@ -28,7 +25,7 @@ if os.environ.get('READTHEDOCS') == 'True':
     install_requires = list(filter(lambda x: x != 'av', install_requires))
 
 setuptools.setup(
-    name='aiortc',
+    name='baiortc',
     version='0.9.21',
     description='An implementation of WebRTC and ORTC',
     long_description=long_description,
@@ -49,7 +46,7 @@ setuptools.setup(
         'Programming Language :: Python :: 3.7',
     ],
     cffi_modules=cffi_modules,
-    packages=['aiortc', 'aiortc.codecs', 'aiortc.contrib'],
+    packages=['baiortc', 'baiortc.contrib'],
     setup_requires=['cffi>=1.0.0'],
     install_requires=install_requires,
 )

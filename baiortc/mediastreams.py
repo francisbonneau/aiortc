@@ -3,7 +3,7 @@ import fractions
 import time
 import uuid
 
-from av import AudioFrame, VideoFrame
+# from av import AudioFrame, VideoFrame
 from pyee import EventEmitter
 
 AUDIO_PTIME = 0.020  # 20ms audio packetization
@@ -71,25 +71,26 @@ class AudioStreamTrack(MediaStreamTrack):
         """
         if self.readyState != "live":
             raise MediaStreamError
-
-        sample_rate = 8000
-        samples = int(AUDIO_PTIME * sample_rate)
-
-        if hasattr(self, "_timestamp"):
-            self._timestamp += samples
-            wait = self._start + (self._timestamp / sample_rate) - time.time()
-            await asyncio.sleep(wait)
-        else:
-            self._start = time.time()
-            self._timestamp = 0
-
-        frame = AudioFrame(format="s16", layout="mono", samples=samples)
-        for p in frame.planes:
-            p.update(bytes(p.buffer_size))
-        frame.pts = self._timestamp
-        frame.sample_rate = sample_rate
-        frame.time_base = fractions.Fraction(1, sample_rate)
-        return frame
+        #
+        # sample_rate = 8000
+        # samples = int(AUDIO_PTIME * sample_rate)
+        #
+        # if hasattr(self, "_timestamp"):
+        #     self._timestamp += samples
+        #     wait = self._start + (self._timestamp / sample_rate) - time.time()
+        #     await asyncio.sleep(wait)
+        # else:
+        #     self._start = time.time()
+        #     self._timestamp = 0
+        #
+        # frame = AudioFrame(format="s16", layout="mono", samples=samples)
+        # for p in frame.planes:
+        #     p.update(bytes(p.buffer_size))
+        # frame.pts = self._timestamp
+        # frame.sample_rate = sample_rate
+        # frame.time_base = fractions.Fraction(1, sample_rate)
+        # return frame
+        return None
 
 
 class VideoStreamTrack(MediaStreamTrack):
@@ -121,9 +122,10 @@ class VideoStreamTrack(MediaStreamTrack):
         """
         pts, time_base = await self.next_timestamp()
 
-        frame = VideoFrame(width=640, height=480)
-        for p in frame.planes:
-            p.update(bytes(p.buffer_size))
-        frame.pts = pts
-        frame.time_base = time_base
-        return frame
+        # frame = VideoFrame(width=640, height=480)
+        # for p in frame.planes:
+        #     p.update(bytes(p.buffer_size))
+        # frame.pts = pts
+        # frame.time_base = time_base
+        # return frame
+        return None

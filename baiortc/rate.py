@@ -1,7 +1,7 @@
 import math
 from enum import Enum
 
-from aiortc.utils import uint32_add, uint32_gt
+from baiortc.utils import uint32_add, uint32_gt
 
 BURST_DELTA_THRESHOLD_MS = 5
 

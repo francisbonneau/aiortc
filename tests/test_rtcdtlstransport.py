@@ -3,7 +3,7 @@ import datetime
 from unittest import TestCase
 from unittest.mock import patch
 
-from aiortc.rtcdtlstransport import (
+from baiortc.rtcdtlstransport import (
     DtlsError,
     RTCCertificate,
     RTCDtlsFingerprint,
@@ -11,12 +11,12 @@ from aiortc.rtcdtlstransport import (
     RTCDtlsTransport,
     RtpRouter,
 )
-from aiortc.rtcrtpparameters import (
+from baiortc.rtcrtpparameters import (
     RTCRtpCodecParameters,
     RTCRtpDecodingParameters,
     RTCRtpReceiveParameters,
 )
-from aiortc.rtp import (
+from baiortc.rtp import (
     RTCP_PSFB_APP,
     RTCP_PSFB_PLI,
     RTCP_RTPFB_NACK,
@@ -93,7 +93,7 @@ class RTCDtlsTransportTest(TestCase):
         self.assertEqual(stats_a.bytesSent, stats_b.bytesReceived)
         self.assertEqual(stats_b.bytesSent, stats_a.bytesReceived)
 
-    @patch("aiortc.rtcdtlstransport.lib.SSL_CTX_use_certificate")
+    @patch("baiortc.rtcdtlstransport.lib.SSL_CTX_use_certificate")
     def test_broken_ssl(self, mock_use_certificate):
         mock_use_certificate.return_value = 0
 
@@ -363,9 +363,9 @@ class RTCDtlsTransportTest(TestCase):
         run(session1.stop())
         run(session2.stop())
 
-    @patch("aiortc.rtcdtlstransport.lib.SSL_do_handshake")
-    @patch("aiortc.rtcdtlstransport.lib.SSL_get_error")
-    @patch("aiortc.rtcdtlstransport.lib.ERR_get_error")
+    @patch("baiortc.rtcdtlstransport.lib.SSL_do_handshake")
+    @patch("baiortc.rtcdtlstransport.lib.SSL_get_error")
+    @patch("baiortc.rtcdtlstransport.lib.ERR_get_error")
     def test_handshake_error(
         self, mock_err_get_error, mock_ssl_get_error, mock_do_handshake
     ):

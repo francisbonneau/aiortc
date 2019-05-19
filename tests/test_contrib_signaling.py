@@ -2,8 +2,8 @@ import argparse
 import asyncio
 from unittest import TestCase
 
-from aiortc import RTCIceCandidate, RTCSessionDescription
-from aiortc.contrib.signaling import (
+from baiortc import RTCIceCandidate, RTCSessionDescription
+from baiortc.contrib.signaling import (
     add_signaling_arguments,
     create_signaling,
     object_from_string,

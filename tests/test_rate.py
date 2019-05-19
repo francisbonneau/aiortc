@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from numpy import random
 
-from aiortc.rate import (
+from baiortc.rate import (
     AimdRateControl,
     BandwidthUsage,
     InterArrival,

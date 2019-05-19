@@ -2,11 +2,11 @@ import datetime
 from unittest import TestCase
 from unittest.mock import patch
 
-from aiortc import clock
+from baiortc import clock
 
 
 class ClockTest(TestCase):
-    @patch("aiortc.clock.current_datetime")
+    @patch("baiortc.clock.current_datetime")
     def test_current_ms(self, mock_now):
         mock_now.return_value = datetime.datetime(
             2018, 9, 11, tzinfo=datetime.timezone.utc

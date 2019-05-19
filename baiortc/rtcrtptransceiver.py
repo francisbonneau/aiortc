@@ -1,7 +1,6 @@
 import logging
 
-from aiortc.codecs import get_capabilities
-from aiortc.sdp import DIRECTIONS
+from baiortc.sdp import DIRECTIONS
 
 logger = logging.getLogger("rtp")
 
@@ -91,7 +90,8 @@ class RTCRtpTransceiver:
         if not codecs:
             self._preferred_codecs = []
 
-        capabilities = get_capabilities(self.kind).codecs
+        #capabilities = get_capabilities(self.kind).codecs
+        capabilities = []
         unique = []
         for codec in reversed(codecs):
             if codec not in capabilities:

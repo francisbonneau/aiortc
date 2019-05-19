@@ -5,7 +5,7 @@ import sys
 
 from cryptography.hazmat.backends.openssl.backend import backend
 
-from aiortc.rtcdtlstransport import RTCCertificate, RTCDtlsTransport
+from baiortc.rtcdtlstransport import RTCCertificate, RTCDtlsTransport
 
 
 def lf2crlf(x):

@@ -6,7 +6,6 @@ from collections import OrderedDict
 from pyee import EventEmitter
 
 from . import clock, rtp, sdp
-from .codecs import CODECS, HEADER_EXTENSIONS, is_rtx
 from .events import RTCTrackEvent
 from .exceptions import InternalError, InvalidAccessError, InvalidStateError
 from .rtcconfiguration import RTCConfiguration
@@ -511,9 +510,9 @@ class RTCPeerConnection(EventEmitter):
         # offer codecs
         for transceiver in self.__transceivers:
             transceiver._codecs = filter_preferred_codecs(
-                CODECS[transceiver.kind][:], transceiver._preferred_codecs
+                # CODECS[transceiver.kind][:], transceiver._preferred_codecs
             )
-            transceiver._headerExtensions = HEADER_EXTENSIONS[transceiver.kind][:]
+            # transceiver._headerExtensions = HEADER_EXTENSIONS[transceiver.kind][:]
 
         mids = self.__seenMids.copy()
 
@@ -719,7 +718,7 @@ class RTCPeerConnection(EventEmitter):
                 assert len(common)
                 transceiver._codecs = common
                 transceiver._headerExtensions = find_common_header_extensions(
-                    HEADER_EXTENSIONS[media.kind], media.rtp.headerExtensions
+                    # HEADER_EXTENSIONS[media.kind], media.rtp.headerExtensions
                 )
 
                 # configure transport
@@ -807,7 +806,7 @@ class RTCPeerConnection(EventEmitter):
             self.__updateIceGatheringState()
             self.__updateIceConnectionState()
 
-        # FIXME: in aiortc 1.0.0 emit RTCTrackEvent directly
+        # FIXME: in baiortc 1.0.0 emit RTCTrackEvent directly
         for event in trackEvents:
             self.emit("track", event.track)
 

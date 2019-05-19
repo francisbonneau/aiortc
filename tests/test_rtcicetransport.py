@@ -1,9 +1,9 @@
 import asyncio
 from unittest import TestCase
 
-from aiortc.exceptions import InvalidStateError
-from aiortc.rtcconfiguration import RTCIceServer
-from aiortc.rtcicetransport import (
+from baiortc.exceptions import InvalidStateError
+from baiortc.rtcconfiguration import RTCIceServer
+from baiortc.rtcicetransport import (
     RTCIceCandidate,
     RTCIceGatherer,
     RTCIceParameters,

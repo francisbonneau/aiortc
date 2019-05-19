@@ -5,7 +5,6 @@ import time
 import uuid
 
 from . import clock, rtp
-from .codecs import get_capabilities, get_encoder, is_rtx
 from .exceptions import InvalidStateError
 from .mediastreams import MediaStreamError
 from .rtcrtpparameters import RTCRtpSendParameters
@@ -116,7 +115,8 @@ class RTCRtpSender:
 
         :rtype: :class:`RTCRtpCapabilities`
         """
-        return get_capabilities(kind)
+        #return get_capabilities(kind)
+        return []
 
     async def getStats(self):
         """
@@ -172,8 +172,9 @@ class RTCRtpSender:
             # make note of RTX payload type
             for codec in parameters.codecs:
                 if (
-                    is_rtx(codec)
-                    and codec.parameters["apt"] == parameters.codecs[0].payloadType
+                    #is_rtx(codec)
+                    #and codec.parameters["apt"] == parameters.codecs[0].payloadType
+                    codec.parameters["apt"] == parameters.codecs[0].payloadType
                 ):
                     self.__rtx_payload_type = codec.payloadType
                     break
@@ -245,7 +246,8 @@ class RTCRtpSender:
 
         # encode frame
         if self.__encoder is None:
-            self.__encoder = get_encoder(codec)
+            # self.__encoder = get_encoder(codec)
+            return None
         return await self.__loop.run_in_executor(
             None, self.__encoder.encode, frame, self.__force_keyframe
         )

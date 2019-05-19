@@ -5,8 +5,8 @@ import os
 import random
 import sys
 
-from aiortc import RTCIceCandidate, RTCSessionDescription
-from aiortc.sdp import candidate_from_sdp, candidate_to_sdp
+from baiortc import RTCIceCandidate, RTCSessionDescription
+from baiortc.sdp import candidate_from_sdp, candidate_to_sdp
 
 try:
     import aiohttp
@@ -15,7 +15,7 @@ except ImportError:  # pragma: no cover
     aiohttp = None
     websockets = None
 
-logger = logging.getLogger("aiortc.contrib.signaling")
+logger = logging.getLogger("baiortc.contrib.signaling")
 
 
 def object_from_string(message_str):
@@ -271,7 +271,7 @@ def add_signaling_arguments(parser):
     )
     parser.add_argument(
         "--signaling-path",
-        default="aiortc.socket",
+        default="baiortc.socket",
         help="Signaling socket path (unix-socket only)",
     )
     parser.add_argument(

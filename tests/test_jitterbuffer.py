@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from aiortc.jitterbuffer import JitterBuffer
-from aiortc.rtp import RtpPacket
+from baiortc.jitterbuffer import JitterBuffer
+from baiortc.rtp import RtpPacket
 
 
 class JitterBufferTest(TestCase):

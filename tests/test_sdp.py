@@ -1,11 +1,11 @@
 from unittest import TestCase
 
-from aiortc.rtcrtpparameters import (
+from baiortc.rtcrtpparameters import (
     RTCRtcpFeedback,
     RTCRtpCodecParameters,
     RTCRtpHeaderExtensionParameters,
 )
-from aiortc.sdp import GroupDescription, SessionDescription, SsrcDescription
+from baiortc.sdp import GroupDescription, SessionDescription, SsrcDescription
 
 from .utils import lf2crlf
 

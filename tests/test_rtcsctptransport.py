@@ -2,9 +2,9 @@ import asyncio
 from unittest import TestCase
 from unittest.mock import patch
 
-from aiortc.exceptions import InvalidStateError
-from aiortc.rtcdatachannel import RTCDataChannel, RTCDataChannelParameters
-from aiortc.rtcsctptransport import (
+from baiortc.exceptions import InvalidStateError
+from baiortc.rtcdatachannel import RTCDataChannel, RTCDataChannelParameters
+from baiortc.rtcsctptransport import (
     SCTP_DATA_FIRST_FRAG,
     SCTP_DATA_LAST_FRAG,
     SCTP_DATA_UNORDERED,
@@ -1239,7 +1239,7 @@ class RTCSctpTransportTest(TestCase):
         self.assertEqual(client._association_state, RTCSctpTransport.State.CLOSED)
         self.assertEqual(server._association_state, RTCSctpTransport.State.CLOSED)
 
-    @patch("aiortc.rtcsctptransport.logger.isEnabledFor")
+    @patch("baiortc.rtcsctptransport.logger.isEnabledFor")
     def test_connect_with_logging(self, mock_is_enabled_for):
         mock_is_enabled_for.return_value = True
 
